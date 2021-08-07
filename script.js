@@ -1,3 +1,4 @@
+
 // calling inputs
 let budgetInput = document.querySelector('.budgetInput');
 let expenseInput = document.querySelector('.expenseInput');
@@ -26,6 +27,7 @@ listAlert.style.textAlign = 'center';
 // for expense table
 const expenseListHead = document.querySelector('.expenseListHead');
 const expenseBody = document.querySelector('.expenseBody');
+
 expenseBody.style.width = '100%';
 expenseListHead.style.color = 'white';
 expenseListHead.style.fontSize = '1.1rem';
@@ -40,9 +42,11 @@ budgetBtn.addEventListener('click', () => {
         budgetAlert.innerHTML = `<div class="alert alert-danger" role="alert">
             Value cannot empty
           </div>`;
+        
         setTimeout(() => {
             budgetAlert.innerHTML = '';
         }, 2000);
+        
         budgetInput.value = '';
     }
 
@@ -50,9 +54,11 @@ budgetBtn.addEventListener('click', () => {
         budgetAlert.innerHTML = `<div class="alert alert-danger" role="alert">
         Value cannot negative
       </div>`;
+        
         setTimeout(() => {
             budgetAlert.innerHTML = '';
         }, 2000);
+        
         budgetInput.value = '';
     }
 
@@ -62,9 +68,11 @@ budgetBtn.addEventListener('click', () => {
         if (balance.innerText == '0') {
             balance.parentElement.style.color = 'red';
         }
+        
         else {
             balance.parentElement.style.color = 'green';
         }
+        
         budgetInput.value = '';
     }
 });
@@ -74,6 +82,7 @@ expenseBtn.addEventListener('click', () => {
         expenseAlert.innerHTML = `<div class="alert alert-danger" role="alert">
         Value cannot empty
       </div>`;
+        
         setTimeout(() => {
             expenseAlert.innerHTML = '';
         }, 2000);
@@ -82,6 +91,7 @@ expenseBtn.addEventListener('click', () => {
         expenseAlert.innerHTML = `<div class="alert alert-danger" role="alert">
         Value cannot negative
       </div>`;
+        
         setTimeout(() => {
             expenseAlert.innerHTML = '';
         }, 2000);
@@ -146,11 +156,14 @@ function editing(e) {
     expenseInput.value= e.parentElement.previousSibling.previousSibling.textContent;
     expenseAmountInput.value= e.parentElement.previousSibling.textContent;
     e.parentElement.parentElement.remove();
+    
     expense.textContent = parseInt(expense.textContent) - parseInt(e.parentElement.previousSibling.textContent);
     balance.textContent = parseInt(balance.textContent) + parseInt(e.parentElement.previousSibling.textContent);
+    
     listAlert.innerHTML = `<div class="alert alert-primary" role="alert">
     Moved to editor...
   </div>`;
+    
     setTimeout(() => {
         listAlert.innerHTML = '';
     }, 2000);
@@ -164,9 +177,15 @@ function deleting(e) {
     listAlert.innerHTML = `<div class="alert alert-warning" role="alert">
     History Deleted...
   </div>`;
+    
     setTimeout(() => {
         listAlert.innerHTML = '';
     }, 2000);
 }
+
+
+
+
+
 
 
