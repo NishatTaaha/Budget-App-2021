@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Budget App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+        html {font-size: 100%;}
+        body {
+            width: 100vw;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+            text-transform: capitalize;
+        }
+        .container-fluid{
+                display: flex;
+                flex-flow: row;
+            }
+        .caculatedDiv {
+            display: flex;
+            flex-flow: column;
+            text-align: center;
+            width: 40vw;
+        }
+        .input-groups{width: 45vw;}
+        .expenseList td {padding: .8rem;}
+        .expenseList tr:nth-child(odd){background-color: rgba(128,0,128,.1);}
+        .expenseList tr:nth-child(even) {background-color: lightgrey;}
+        @media(max-width: 800px){
+            html {font-size: 95%;}
+            .container-fluid{
+                display: flex;
+                flex-flow: column;
+            }
+            .input-groups{width: 90vw;}
+            .caculatedDiv{width: 85vw;}
+        }
+        @media(max-width: 800px){
+            html {font-size: 80%;}
+        }
+    </style>
+</head>
+<body>
+    <h1 class="m-4" style="overflow-y: hidden;">Budget App</h1>
+    <div class="container-fluid justify-content-center" style="width: 100vw;">
+        <div class="input-groups">
+            <div class="budgetDiv p-4 m-4" style="border: 4px solid purple; background-color: rgba(128,0,128,.1);">
+                <div class="budgetAlert"></div>
+                <h2 class="m-2" style="overflow-y:hidden;">Enter your budget</h2>
+                <input type="number" class="budgetInput form-control p-3 mt-4" placeholder="Budget amount" aria-label=""
+                    aria-describedby="basic-addon1">
+                <button type="button" class="budgetBtn btn btn-danger mt-4"
+                    style="background-color: purple; border: 2px solid purple;">Calculate</button>
+            </div>
+            <div class="expenseDiv p-4 m-4" style="border: 4px solid darkblue; background-color: rgba(0,0,128,.1);">
+                <div class="expenseAlert"></div>
+                <h2 class="m-2" style="overflow-y:hidden;">Enter your Expense</h2>
+                <input type="text" class="expenseInput form-control p-3 mt-4 mb-4" placeholder="Expense"
+                    aria-label="" aria-describedby="basic-addon1">
+                <h2 class="m-2" style="overflow-y:hidden;">Enter your Expense Amount</h2>
+                <input type="number" class="expenseAmountInput form-control p-3 mt-4" placeholder="Expense amount"
+                    aria-label="" aria-describedby="basic-addon1">
+                <button type="button" class="expenseBtn btn btn-primary mt-4"
+                    style="background-color: darkblue; border: 2px solid darkblue;">Add To List</button>
+            </div>
+        </div>
+        <div class="caculatedDiv m-4" height: 100vh;">
+            <table class="table" border="0">
+                <thead>
+                    <tr class="bg-dark text-light" style="font-size: 1.7rem;">
+                        <td scope="col">Budget</td>
+                        <td scope="col">expenses</td>
+                        <td scope="col">Balance</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="expenseRow p-3" style="font-size: 3rem;">
+                        <td><i class="fas fa-money-bill-alt"></i></td>
+                        <td><i class="fas fa-hand-holding-usd"></i></td>
+                        <td><i class="fas fa-coins"></i></td>
+                    </tr>
+                    <tr class="balnce" style="font-size: 2rem; font-weight: bold;">
+                        <td>$<span class="budget">0</span></td>
+                        <td>$<span class="expense">0</span></td>
+                        <td>$<span class="balance">0</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="expenseList mt-5" style="background-color: lightgray; visibility: hidden;">
+                <thead class='expenseListHead bg-dark'>
+                    <tr>
+                        <td scope="col">Expense Name</td>
+                        <td scope="col">Expense Amount</td>
+                        <td scope="col">Edit</td>
+                        <td scope="col">Delete</td>
+                    </tr>
+                </thead>
+                <tbody class="expenseBody"></tbody>
+            </table>
+            <div class="listAlert mt-5"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
