@@ -37,7 +37,6 @@ expenseBody.style.fontWeight = 'bold';
 
 
 budgetBtn.addEventListener('click', () => {
-
     if (budgetInput.value == '') {
         budgetAlert.innerHTML = `<div class="alert alert-danger" role="alert">
             Value cannot empty
@@ -50,6 +49,7 @@ budgetBtn.addEventListener('click', () => {
         budgetInput.value = '';
     }
 
+    
     else if (budgetInput.value < 0) {
         budgetAlert.innerHTML = `<div class="alert alert-danger" role="alert">
         Value cannot negative
@@ -62,6 +62,7 @@ budgetBtn.addEventListener('click', () => {
         budgetInput.value = '';
     }
 
+    
     else {
         budget.textContent = parseInt(budgetInput.value);
         balance.textContent = parseInt(budgetInput.value);
@@ -77,6 +78,8 @@ budgetBtn.addEventListener('click', () => {
     }
 });
 
+
+
 expenseBtn.addEventListener('click', () => {
     if (expenseAmountInput.value == '' || expenseInput.value == '') {
         expenseAlert.innerHTML = `<div class="alert alert-danger" role="alert">
@@ -87,6 +90,7 @@ expenseBtn.addEventListener('click', () => {
             expenseAlert.innerHTML = '';
         }, 2000);
     }
+    
     else if (expenseAmountInput.value < 0) {
         expenseAlert.innerHTML = `<div class="alert alert-danger" role="alert">
         Value cannot negative
@@ -96,6 +100,7 @@ expenseBtn.addEventListener('click', () => {
             expenseAlert.innerHTML = '';
         }, 2000);
     }
+    
     else {
         expense.textContent = parseInt(expenseAmountInput.value) + parseInt(expense.textContent);
         balance.textContent = parseInt(budget.textContent) - parseInt(expense.textContent);
@@ -107,18 +112,14 @@ expenseBtn.addEventListener('click', () => {
             balance.parentElement.style.color = 'green';
         }
         expenseList.style.visibility = 'visible';
-
         showExpenseTable();
-
         expenseAmountInput.value = '';
         expenseInput.value = '';
     }
-
 });
 
 
 function showExpenseTable() {
-
     const newRow = document.createElement('tr');
     newRow.classList.add('newRowTr');
 
@@ -133,6 +134,7 @@ function showExpenseTable() {
     newExpenseAmount.innerHTML = expenseAmountInput.value;
     newRow.appendChild(newExpenseAmount);
 
+    
     // adding editing and deleting button
     const newEdit = document.createElement('td');
     newEdit.innerHTML = `<i class="fas fa-pen" onclick="editing(this)"></i>`;
@@ -182,6 +184,14 @@ function deleting(e) {
         listAlert.innerHTML = '';
     }, 2000);
 }
+
+
+
+
+
+
+
+
 
 
 
